@@ -1,15 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary';
+import CalculatorPage from './pages/CalculatorPage.jsx';
 import './App.css';
 
 function App() {
   return (
     <ErrorBoundary>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CalculatorPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
     </ErrorBoundary>
   );
 }

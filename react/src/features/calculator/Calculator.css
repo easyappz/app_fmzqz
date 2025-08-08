@@ -1,0 +1,115 @@
+:root {
+  --bg: #0f0f10;
+  --panel: #1b1c1f;
+  --text: #ffffff;
+  --text-dim: #9ca3af;
+  --key-dark: #2a2b30;
+  --key-light: #a5a6ab;
+  --key-op: #ff9f0a;
+  --key-op-active: #ffa733;
+}
+
+.calc-wrap {
+  min-height: 100vh;
+  padding: calc(16px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.0) 40%), var(--bg);
+}
+
+.calc {
+  width: min(420px, 92vw);
+  background: linear-gradient(180deg, #1f2126 0%, #16171b 100%);
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+  padding: 20px 16px 16px 16px;
+}
+
+.calc-display {
+  height: 120px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  color: var(--text);
+}
+
+.calc-display-hint {
+  min-height: 20px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.calc-display-value {
+  line-height: 1.1;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 12px 4px 8px 4px;
+}
+
+.key {
+  border: none;
+  color: var(--text);
+  background: var(--key-dark);
+  border-radius: 9999px;
+  padding: 0;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: transform 0.06s ease-in-out, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.key:hover {
+  filter: brightness(1.05);
+}
+
+.key:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.key-func {
+  color: #141518;
+  background: var(--key-light);
+}
+
+.key-op {
+  background: var(--key-op);
+  color: #141518;
+}
+
+.key-eq {
+  background: linear-gradient(180deg, #ffbf47 0%, var(--key-op) 100%);
+  color: #141518;
+}
+
+.key-digit {
+  background: linear-gradient(180deg, #2b2d33 0%, #25262b 100%);
+}
+
+.key-active,
+.key-op.key-active {
+  background: var(--key-op-active);
+}
+
+.key-grow {
+  grid-column: span 2;
+  aspect-ratio: 2 / 1;
+  border-radius: 48px;
+}
+
+@media (min-width: 760px) {
+  .calc {
+    width: 420px;
+  }
+}
